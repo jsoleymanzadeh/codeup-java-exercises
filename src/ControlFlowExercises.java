@@ -18,8 +18,19 @@ public class ControlFlowExercises {
 //        for (int i = 100; i >= -10; i -= 5) {
 //            System.out.printf("%d\n", i);
 //        }
-        for (double j = 2; j < 1000000; j *= j) {
-            System.out.printf("%d\n", (int) j);
+//        for (double j = 2; j < 1000000; j *= j) {
+//            System.out.printf("%d\n", (int) j);
+//        }
+        for (int i = 1; i <= 100; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                System.out.printf("FizzBuzz\n");
+            } else if (i % 3 == 0) {
+                System.out.printf("Fizz\n");
+            } else if (i % 5 == 0) {
+                System.out.printf("Buzz\n");
+            } else {
+                System.out.printf("%d\n", i);
+            }
         }
     }
 }

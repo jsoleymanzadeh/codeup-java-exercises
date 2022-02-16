@@ -41,7 +41,7 @@ public class ControlFlowExercises {
 //        for (int i = 1; i <= userInt; i++) {
 //            System.out.printf("%d\t\t|\t%d\t\t|\t%d\n", i, i * i, i * i * i);
 //        }
-//        do {
+//        while (true) {
 //            System.out.print("Continue? [y/N] ");
 //            String userContinue = scanner.next();
 //            if (userContinue.equals("N")) {
@@ -52,8 +52,8 @@ public class ControlFlowExercises {
 //            } else {
 //                System.out.println("Invalid response.");
 //            }
-//        } while (true);
-        do {
+//        }
+        while (true) {
             System.out.print("Continue? [y/N] ");
             String userContinue = scanner.next();
             if (userContinue.equals("N")) {
@@ -94,6 +94,6 @@ public class ControlFlowExercises {
                 convertedGrade = "F";
             }
             System.out.println(convertedGrade);
-        } while (true);
+        }
     }
 }

@@ -17,11 +17,23 @@ public class MethodsExercises {
     }
 
     public static int divide(int a, int b) {
-        return a / b;
+//        return a / b;
+        if (a == b) {
+            return 1;
+        } else if (a < b) {
+            return 0;
+        }
+        return 1 + divide(a - b, b);
     }
 
     public static int modulo(int a, int b) {
-        return a % b;
+//        return a % b;
+        if (a == b) {
+            return 0;
+        } else if (a < b) {
+            return a;
+        }
+        return modulo(a - b, b);
     }
 
     public static int getInteger(int min, int max) {

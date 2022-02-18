@@ -5,7 +5,7 @@ public class HighLow {
     public static void guessNumber(int target, int limit) {
         Scanner scanner = new Scanner(System.in);
         if (limit == 0) {
-            System.out.println("Too many attempts. You lose.");
+            System.out.println("Too many attempts.\nYOU LOSE!");
             return;
         } else if (limit == 1) {
             System.out.println("1 try remaining");
@@ -44,7 +44,7 @@ public class HighLow {
         } else if (difficulty.equals("hard")) {
             return 5;
         } else {
-            System.out.println("Invalid Input.");
+            System.out.println("Invalid response.");
             return setDifficulty();
         }
     }
@@ -55,7 +55,7 @@ public class HighLow {
         int limit = setDifficulty();
         guessNumber(target, limit);
         while (true) {
-            System.out.println("Would you like to play again? [y/N] ");
+            System.out.print("Would you like to play again? [y/N] ");
             String userReplay = scanner.next();
             if (userReplay.equals("N")) {
                 System.out.println("Exiting...");

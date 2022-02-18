@@ -51,22 +51,21 @@ public class HighLow {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        int target = (int) (Math.random() * 100 + 1);
-        int limit = setDifficulty();
-        guessNumber(target, limit);
+        String userReplay = "y";
         while (true) {
-            System.out.print("Would you like to play again? [y/N] ");
-            String userReplay = scanner.next();
             if (userReplay.equals("N")) {
                 System.out.println("Exiting...");
                 return;
             } else if (!userReplay.equals("y")) {
-                System.out.println("Invalid response.");
+                System.out.println("Try again: ");
+                userReplay = scanner.next();
                 continue;
             }
-            limit = setDifficulty();
-            target = (int) (Math.random() * 100 + 1);
+            int limit = setDifficulty();
+            int target = (int) (Math.random() * 100 + 1);
             guessNumber(target, limit);
+            System.out.print("Would you like to play again? [y/N] ");
+            userReplay = scanner.next();
         }
     }
 }

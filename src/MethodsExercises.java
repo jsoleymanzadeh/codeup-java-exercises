@@ -68,10 +68,10 @@ public class MethodsExercises {
                 userContinue = scanner.next();
                 continue;
             }
-            System.out.print("Enter number from 1 to 25: ");
+            System.out.print("Enter number from 1 to 20: ");
             int number = scanner.nextInt();
-            if (number < 1 || number > 25) {
-                System.out.println("Number must be from 1 to 25.");
+            if (number < 1 || number > 20) {
+                System.out.println("Number must be from 1 to 20.");
                 continue;
             }
 //            long product = 1;

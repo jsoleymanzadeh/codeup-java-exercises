@@ -13,6 +13,11 @@ public class GradesApplication {
     private static void displayInfo(Student student, String userInput) {
         System.out.printf("\nName: %s - GitHub Username: %s\nCurrent Average: %.1f\nAll Grades: ", student.getName(), userInput, student.getGradeAverage());
         student.getGrades();
+        System.out.printf("\nAttendance Record: %.1f%%", student.attendanceRate());
+        System.out.print("\nAbsences: ");
+        for(String date : student.findAbsences()) {
+            System.out.printf("%s ", date);
+        }
     }
 
     public static void main(String[] args) {
@@ -55,9 +60,9 @@ public class GradesApplication {
                 }
                 System.out.printf("\nClass Average: %.1f\n", total / students.size());
             } else if (userInput.equals("csv")) {
-                System.out.println("\nname,github_username,average");
+                System.out.println("\nname,github_username,average,attendance");
                 for (String key : students.keySet()) {
-                    System.out.printf("%s,%s,%.1f\n", students.get(key).getName(), key, students.get(key).getGradeAverage());
+                    System.out.printf("%s,%s,%.1f,%.1f\n", students.get(key).getName(), key, students.get(key).getGradeAverage(), students.get(key).attendanceRate());
                 }
             } else {
                 System.out.printf("\nSorry, no student found with the GitHub username of \"%s\"", userInput);

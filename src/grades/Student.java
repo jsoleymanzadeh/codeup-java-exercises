@@ -37,36 +37,38 @@ public class Student {
         }
     }
 
-    public void recordAttendance() {
+    public void recordAttendance(String date, String value) {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Date: [YYYY-MM-DD] ");
-        String date = scanner.next();
-        System.out.print("Attendance: [P/A] ");
-        String presence = scanner.next();
-        while (!presence.equals("P") && !presence.equals("A")) {
-            System.out.println("Try again.");
+        while (!value.equals("P") && !value.equals("A")) {
+            System.out.println("Attendance value must be \"P\" or \"A\"");
             System.out.print("Attendance: [P/A] ");
-            presence = scanner.next();
+            value = scanner.next();
         }
-        attendance.put(date, presence);
+        this.attendance.put(date, value);
     }
 
     public double attendanceRate() {
         int presentDays = 0;
         int totalDays = 0;
-        for (String date : attendance.keySet()) {
+        for (String date : this.attendance.keySet()) {
             totalDays++;
-            if (attendance.get(date).equals("P")) {
+            if (this.attendance.get(date).equals("P")) {
                 presentDays++;
             }
         }
-        return (double) presentDays / totalDays;
+        if (totalDays == 0) {
+            return 0;
+        }
+        return (double) presentDays * 100 / totalDays;
     }
 
-    public static void main(String[] args) {
-        Student test = new Student("test");
-        test.recordAttendance();
-        test.recordAttendance();
-        System.out.println("attendance = " + test.attendance);
+    public ArrayList<String> findAbsences() {
+        ArrayList<String> absences = new ArrayList<>();
+        for (String date : this.attendance.keySet()) {
+            if (this.attendance.get(date).equals("A")) {
+                absences.add(date);
+            }
+        }
+        return absences;
     }
 }

@@ -37,7 +37,7 @@ public class Input {
     }
 
     public int getInt() {
-        return this.scanner.nextInt();
+        return Integer.parseInt(getString());
     }
 
     public double getDouble(String prompt) {
@@ -55,6 +55,14 @@ public class Input {
     }
 
     public double getDouble() {
-        return this.scanner.nextDouble();
+        return Double.parseDouble(getString());
+    }
+
+    public int getBinary() {
+        return Integer.valueOf(getString(), 2);
+    }
+
+    public int getHex() {
+        return Integer.valueOf(getString(), 16);
     }
 }

@@ -1,21 +1,20 @@
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.Scanner;
+import util.Input;
 
 public class GroceryList {
     public static ArrayList<HashMap<String, String>> addItems(ArrayList<HashMap<String, String>> groceryList) {
-        Scanner scanner = new Scanner(System.in);
+        Input scanner = new Input();
         System.out.print("Add new item? [y/N] ");
-        if (!scanner.next().equals("y")) {
+        if (!scanner.getString().equals("y")) {
             return groceryList;
         }
         HashMap<String, String> item = new HashMap<>();
         System.out.print("\n1: Fruits\n2: Vegetables\n3: Grains\n4: Protein Foods\n5: Dairy\n6: Other\n\nItem Category: ");
-        String category = scanner.next();
+        String category = scanner.getString();
         while (!category.equals("1") && !category.equals("2") && !category.equals("3") && !category.equals("4") && !category.equals("5") && !category.equals("6")) {
             System.out.print("\nTry again.\n\n1: Fruits\n2: Vegetables\n3: Grains\n4: Protein Foods\n5: Dairy\n6: Other\n\nItem Category: ");
-            category = scanner.next();
+            category = scanner.getString();
         }
         switch (category) {
             case "1":
@@ -37,11 +36,11 @@ public class GroceryList {
                 item.put("category", "Other");
                 break;
         }
-        System.out.print("Item Name: ");
-        String name = scanner.next();
+        System.out.print("Item: ");
+        String name = scanner.getString();
         item.put("name", name);
-        System.out.print("Item Quantity: ");
-        String quantity = scanner.next();
+        System.out.print("Quantity: ");
+        String quantity = scanner.getString();
         item.put("quantity", quantity);
         groceryList.add(item);
         System.out.println();
@@ -49,16 +48,16 @@ public class GroceryList {
     }
 
     private static ArrayList<HashMap<String, String>> editItems(ArrayList<HashMap<String, String>> groceryList) {
-        Scanner scanner = new Scanner(System.in);
+        Input scanner = new Input();
         int numberSelector = 1;
-        System.out.println("\n0: Cancel");
+        System.out.println("\n0:\tCancel");
         for (HashMap<String, String> item : groceryList) {
             System.out.printf("%d:\t%s\tx%s\n", numberSelector, item.get("name"), item.get("quantity"));
             item.put("selector", String.valueOf(numberSelector));
             numberSelector++;
         }
         System.out.print("\nEdit Item: ");
-        String userInput = scanner.next();
+        String userInput = scanner.getString();
         if (userInput.equals("0")) {
             return groceryList;
         }
@@ -66,10 +65,10 @@ public class GroceryList {
         for (HashMap<String, String> item : groceryList) {
             if (userInput.equals(item.get("selector"))) {
                 exists = true;
-                System.out.print("Item Name: ");
-                item.put("name", scanner.next());
-                System.out.print("Item Quantity: ");
-                item.put("quantity", scanner.next());
+                System.out.print("New Item: ");
+                item.put("name", scanner.getString());
+                System.out.print("Quantity: ");
+                item.put("quantity", scanner.getString());
             }
         }
         if (!exists) {
@@ -79,7 +78,7 @@ public class GroceryList {
     }
 
     private static void displayList(ArrayList<HashMap<String, String>> groceryList) {
-        Scanner scanner = new Scanner(System.in);
+        Input scanner = new Input();
         HashMap<String, String> categories = new HashMap<>();
         int numberSelector = 1;
         for (HashMap<String, String> item : groceryList) {
@@ -90,16 +89,16 @@ public class GroceryList {
         }
         System.out.print("\n0:\tAll");
         for (String key : categories.keySet()) {
-            System.out.printf("\n%s: %s", key, categories.get(key));
+            System.out.printf("\n%s:\t%s", key, categories.get(key));
         }
-        System.out.print("\n7: Add Item");
-        System.out.print("\n8: Edit Item");
-        System.out.println("\n9: Exit");
+        System.out.print("\n7:\tAdd Item");
+        System.out.print("\n8:\tEdit Item");
+        System.out.println("\n9:\tExit");
         System.out.print("\nDisplay Category: ");
-        String userInput = scanner.next();
+        String userInput = scanner.getString();
         while (!categories.containsKey(userInput) && !userInput.equals("0") && !userInput.equals("7") && !userInput.equals("8") && !userInput.equals("9")) {
             System.out.print("Try again.\nDisplay Category: ");
-            userInput = scanner.next();
+            userInput = scanner.getString();
         }
         switch (userInput) {
             case "0":

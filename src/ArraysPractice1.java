@@ -1,4 +1,4 @@
-public class ArraysPractice {
+public class ArraysPractice1 {
     private static int sumAll(int[] numbers) {
         int total = 0;
         for (int number : numbers) {

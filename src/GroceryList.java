@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+
 import util.Input;
 
 public class GroceryList {
@@ -42,7 +43,9 @@ public class GroceryList {
         System.out.print("Quantity: ");
         String quantity = scanner.getString();
         item.put("quantity", quantity);
-        groceryList.add(item);
+        if (Integer.parseInt(item.get("quantity")) > 0) {
+            groceryList.add(item);
+        }
         System.out.println();
         return addItems(groceryList);
     }
@@ -65,10 +68,14 @@ public class GroceryList {
         for (HashMap<String, String> item : groceryList) {
             if (userInput.equals(item.get("selector"))) {
                 exists = true;
-                System.out.print("New Item: ");
+                System.out.print("Rename Item: ");
                 item.put("name", scanner.getString());
-                System.out.print("Quantity: ");
+                System.out.print("Quantity (0 to delete): ");
                 item.put("quantity", scanner.getString());
+                if (Integer.parseInt(item.get("quantity")) <= 0) {
+                    groceryList.remove(item);
+                }
+                break;
             }
         }
         if (!exists) {

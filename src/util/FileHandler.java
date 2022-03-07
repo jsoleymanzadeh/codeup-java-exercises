@@ -7,11 +7,9 @@ import java.util.List;
 
 public class FileHandler implements HandlesFiles {
     private String directory;
-    private String filename;
 
-    public FileHandler(String directory, String filename) {
+    public FileHandler(String directory) {
         this.directory = directory;
-        this.filename = filename;
     }
 
     @Override

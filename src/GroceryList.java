@@ -45,6 +45,7 @@ public class GroceryList {
         item.put("quantity", quantity);
         if (Integer.parseInt(item.get("quantity")) > 0) {
             groceryList.add(item);
+            groceryList.sort(new GroceryListComparator());
         }
         System.out.println();
         return addItems(groceryList);
@@ -75,6 +76,7 @@ public class GroceryList {
                 if (Integer.parseInt(item.get("quantity")) <= 0) {
                     groceryList.remove(item);
                 }
+                groceryList.sort(new GroceryListComparator());
                 break;
             }
         }
@@ -121,11 +123,9 @@ public class GroceryList {
                 break;
             case "7":
                 groceryList = addItems(groceryList);
-                groceryList.sort(new GroceryListComparator());
                 break;
             case "8":
                 groceryList = editItems(groceryList);
-                groceryList.sort(new GroceryListComparator());
                 break;
             case "9":
                 System.out.println("Exiting...");
@@ -146,7 +146,6 @@ public class GroceryList {
     public static void main(String[] args) {
         ArrayList<HashMap<String, String>> groceryList = new ArrayList<>();
         groceryList = addItems(groceryList);
-        groceryList.sort(new GroceryListComparator());
         displayList(groceryList);
     }
 }
